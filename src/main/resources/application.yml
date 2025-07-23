@@ -1,0 +1,44 @@
+server:
+  port: 8080  # Domyślny port HTTP
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cqrs_example
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/YOUR_DB_NAME  # ← pełny URL do bazy danych
+    username: your_db_user                         # ← login do bazy
+    password: your_db_password                     # ← hasło do bazy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # create | update | validate | none
+    show-sql: true
+
+  mail:
+    host: smtp.example.com  # ← adres serwera SMTP
+    port: 587               # ← port SMTP (np. 587 dla TLS, 465 dla SSL)
+    username: your_email_user     # ← login SMTP
+    password: your_email_password # ← hasło SMTP
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true  # lub false, jeśli używasz TLS
+
+  rabbitmq:
+    host: rabbitmq           # ← host RabbitMQ (np. rabbitmq, localhost, 127.0.0.1)
+    port: 5672               # ← domyślny port AMQP
+    username: rabbit_user    # ← login do RabbitMQ
+    password: rabbit_pass    # ← hasło do RabbitMQ
+
+jwt:
+  secret: your_jwt_secret_string  # np. długi ciąg znaków wygenerowany losowo
+
+mail:
+  address: no-reply@example.com   # ← adres e-mail nadawcy (np. do wysyłki maili)
+  to: contact@example.com         # ← domyślny adres odbiorcy (np. support, administrator)
